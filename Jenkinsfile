@@ -21,8 +21,7 @@ pipeline {
 
         stage('Extract') {
             steps {
-                bat "${env.C:\\Program Files\\Python313\\python.exe
-} extract.py"
+                bat "C:\\Program Files\\Python313\\python.exe extract.py"
             }
         }
     }
