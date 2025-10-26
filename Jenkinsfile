@@ -1,9 +1,9 @@
-Jenkinsfile [Groovy]
+
 pipeline {
     agent any
 
     environment {
-        PYTHON = 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'
+        PYTHON = 'C:\\Program Files\\Python313\\python.exe'
     }
 
     stages {
@@ -21,7 +21,8 @@ pipeline {
 
         stage('Extract') {
             steps {
-                bat "${env.PYTHON} extract.py"
+                bat "${env.C:\\Program Files\\Python313\\python.exe
+} extract.py"
             }
         }
     }
