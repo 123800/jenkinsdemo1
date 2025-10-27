@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "C:\\Program Files\\Python313\\python.exe" 
+        PYTHON = "C:\\Program Files\\Python313\\python.exe"
     }
 
     stages {
@@ -14,13 +14,14 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                bat "${env.PYTHON} --version" 
+                // ✅ Properly quote inside bat command
+                bat "\"${env.PYTHON}\" --version"
             }
         }
 
         stage('Extract') {
             steps {
-                bat "${env.PYTHON} extract.py"
+                bat "\"${env.PYTHON}\" extract.py"
             }
         }
     }
