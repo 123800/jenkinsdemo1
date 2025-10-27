@@ -1,8 +1,8 @@
-
 pipeline {
     agent any
+
     environment {
-        PYTHON = 'C:\\Program Files\\Python313\\python.exe'
+        PYTHON = '"C:\\Program Files\\Python313\\python.exe"'  
     }
 
     stages {
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                bat "${env.PYTHON} --version"
+                bat "${env.PYTHON} --version" 
             }
         }
 
