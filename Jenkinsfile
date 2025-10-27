@@ -1,13 +1,12 @@
 
 pipeline {
     agent any
-
     environment {
         PYTHON = 'C:\\Program Files\\Python313\\python.exe'
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout code') {
             steps {
                 checkout scm
             }
@@ -21,7 +20,7 @@ pipeline {
 
         stage('Extract') {
             steps {
-                bat "C:\\Program Files\\Python313\\python.exe extract.py"
+                bat "${env.PYTHON} extract.py"
             }
         }
     }
