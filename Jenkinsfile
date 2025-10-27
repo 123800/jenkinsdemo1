@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "C:\\Program Files\\Python313\\python.exe"
+        PYTHON = 'C:\ProgramFiles\Python313\python.exe'
     }
 
     stages {
-        stage('Checkout code') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -14,14 +14,13 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                // ✅ Properly quote inside bat command
-                bat "\"${env.PYTHON}\" --version"
+                bat "${env.PYTHON} --version"
             }
         }
 
         stage('Extract') {
             steps {
-                bat "\"${env.PYTHON}\" extract.py"
+                bat "${env.PYTHON} extract.py"
             }
         }
     }
@@ -30,5 +29,13 @@ pipeline {
         always {
             echo 'Pipeline completed.'
         }
+       success {
+            echo 'Pipeline completed.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+
     }
 }
+
