@@ -1,41 +1,10 @@
 pipeline {
     agent any
-
-    environment {
-        PYTHON = "C:\\Program Files\\Python313\\python.exe"
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Test Python') {
             steps {
-                checkout scm
+                bat 'python --version'
             }
         }
-
-        stage('Setup Python') {
-            steps {
-                bat "${env.PYTHON} --version"
-            }
-        }
-
-        stage('Extract') {
-            steps {
-                bat "${env.PYTHON} extract.py"
-            }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline completed.'
-        }
-       success {
-            echo 'Pipeline completed.'
-        }
-        failure {
-            echo 'Pipeline failed.'
-        }
-
     }
 }
-
