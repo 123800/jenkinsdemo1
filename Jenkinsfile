@@ -4,14 +4,19 @@ pipeline {
     stages {
         stage('Checkout code') {
             steps {
-                // pulls your repo files (including extract.py)
                 checkout scm
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                bat 'python -m pip install --upgrade pip'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Python Script') {
             steps {
-                // runs extract.py using the Python in PATH
                 bat 'python extract.py'
             }
         }
@@ -23,3 +28,4 @@ pipeline {
         }
     }
 }
+
